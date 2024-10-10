@@ -41,8 +41,13 @@ const FONTS: string[] = [
                 />
             ))
         }
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
     </head>
     <body>
+    <div class="u-loader" >
+	</div>
         <div class="u-container">
             <nav class="u-flex u-gap-gutter u-py-fluid-md">
                 <a href="/">Index</a>
@@ -68,6 +73,7 @@ const FONTS: string[] = [
             </nav>
         </footer>
         <script src="../scripts/app.ts"></script>
+        
         <script>
             import { setViewportSize } from '@scripts/utils/setViewportSize';
             import { $screenDebounce } from '@scripts/stores/screen';

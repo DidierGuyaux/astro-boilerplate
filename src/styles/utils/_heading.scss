@@ -1,10 +1,41 @@
 // ==========================================================================
 // Utilities / Headings
 // ==========================================================================
+
+
 .u-heading-h1 {
     @include -h1;
+    font-size: 5.3vw;
+    line-height: 1;
+    font-family: "Radio Canada", sans-serif;
+    color: #0a69fe;
+    font-size: 4.788vw;
+    line-height: 1;
+    font-family: "Radio Canada", sans-serif;
+    --elephant-text-weight:0;
+    font-variation-settings: "wght" var(--elephant-text-weight);
+    text-indent: 32.1vw;
+    text-align: justify;
+    text-align-last: justify;
+    transform: translate3d(0, 0, 0);
+    transition: transform 350ms cubic-bezier(0.1, 0, 0, 1), opacity 350ms cubic-bezier(0.1, 0, 0, 1);
 }
 
 .u-heading-h2 {
     @include -h2;
+    
+}
+
+.u-heading-h3 {
+    line-height: 1;
+    font-family: "Arial", sans-serif;
+    color: #0a69fe;
+    font-size: 2.3vw;
+    line-height: 1;
+    font-family: "Radio Canada", sans-serif;
+    //font-weight: 400;
+    text-transform: uppercase;
+    transform: translate3d(0, 0, 0);
+    transition: transform 350ms cubic-bezier(0.1, 0, 0, 1), opacity 350ms cubic-bezier(0.1, 0, 0, 1);
+    margin-bottom: -2.7vw;
 }

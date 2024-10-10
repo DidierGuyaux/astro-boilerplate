@@ -30,6 +30,14 @@
     //     font-style: normal;
     //     font-display: swap;
     // }
+    
+    @font-face {
+        src: url('/fonts/RadioCanada-VariableFont_wdth,wght.ttf') format('ttf');
+        font-family: "Radio Canada", sans-serif;
+        font-optical-sizing: auto;
+       // font-weight: 1;
+        font-style: normal;
+      }
 }
 
 // ==========================================================================
@@ -70,6 +78,8 @@
 
 html {
     font-family: theme('fontFamily.sans');
+    -webkit-font-smoothing: antialiased;
+
 }
 
 body {
@@ -85,12 +95,14 @@ body {
 
 /* Define a transition duration during page visits */
 html.is-changing .transition-fade {
-    transition: opacity 0.25s;
+    transition: opacity 0.35s;
     opacity: 1;
+    cursor: wait;
 }
 /* Define the styles for the unloaded pages */
 html.is-animating .transition-fade {
     opacity: 0;
+    cursor: wait;
 }
 
 .shortcut-functions {
@@ -101,4 +113,7 @@ html.is-animating .transition-fade {
     transition-duration: theme-speed(slow);
     padding: theme-spacing('fluid-sm');
     z-index: theme-z();
+}
+.is-transitioning{
+    cursor: wait;
 }

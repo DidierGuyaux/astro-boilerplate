@@ -4,6 +4,7 @@ import SwupPreloadPlugin from '@swup/preload-plugin';
 import SwupScriptsPlugin from '@swup/scripts-plugin';
 import Swup from 'swup';
 import { Scroll } from '@scripts/classes/Scroll';
+import { gsap } from "gsap/dist/gsap";
 
 export class Transitions {
     static readonly READY_CLASS = 'is-ready';
@@ -34,6 +35,25 @@ export class Transitions {
         requestAnimationFrame(() => {
             document.documentElement.classList.add(Transitions.READY_CLASS);
         });
+        gsap.fromTo(".u-heading-h1",
+        { "--elephant-text-weight": 200, 
+        opacity:0,
+     //   yPercent:-30
+    },
+        { "--elephant-text-weight": 600, 
+        delay:.4,
+        opacity:1,
+      //  yPercent:0,
+        duration: 1,
+        ease: "back.out",
+        overwrite: true });
+        
+        gsap.to(".u-loader",
+        { height:0, 
+        duration: 1,
+        ease: "expo",
+        overwrite: true });
+
     }
 
     destroy() {
@@ -92,6 +112,8 @@ export class Transitions {
         Object.entries(newDataset).forEach(([key, val]) => {
             document.documentElement.setAttribute(`data-${toDash(key)}`, val ?? '');
         });
+
+        
     }
 
     // =============================================================================
@@ -108,6 +130,15 @@ export class Transitions {
     onVisitStart() {
         document.documentElement.classList.add(Transitions.TRANSITION_CLASS);
         document.documentElement.classList.remove(Transitions.READY_CLASS);
+        
+        gsap.to(".u-heading-h1",
+        { "--elephant-text-weight":900, 
+        opacity:1,
+        duration: 1,
+        ease: "power3",
+        overwrite: true });
+
+
     }
 
     /**
@@ -119,6 +150,9 @@ export class Transitions {
      */
     beforeContentReplace() {
         Scroll?.destroy();
+
+
+        
     }
 
     /**
@@ -131,6 +165,15 @@ export class Transitions {
     onContentReplace(visit: VisitType) {
         Scroll?.init();
         this.updateDocumentAttributes(visit);
+
+        gsap.to(".u-heading-h1",
+        { "--elephant-text-weight": 600, 
+        opacity:1,
+        duration: 1,
+        ease: "expo",
+        overwrite: true });
+        
+        
     }
 
     /**
@@ -140,7 +183,14 @@ export class Transitions {
      * @see https://swup.js.org/hooks/#animation-out-start
      * @param visit: VisitType
      */
-    onAnimationOutStart() {}
+    onAnimationOutStart() {
+        gsap.to(".u-heading-h1",
+            { "--elephant-text-weight": 0, 
+            opacity:0,
+            duration: 1,
+            ease: "power3",
+            overwrite: true });
+    }
 
     /**
      * On animation:in:end
@@ -152,5 +202,8 @@ export class Transitions {
     onAnimationInEnd() {
         document.documentElement.classList.remove(Transitions.TRANSITION_CLASS);
         document.documentElement.classList.add(Transitions.READY_CLASS);
+
+
     }
+    
 }
