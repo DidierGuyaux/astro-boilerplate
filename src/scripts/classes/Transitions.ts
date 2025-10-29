@@ -2,9 +2,13 @@ import { toDash } from '@scripts/utils/string';
 import SwupHeadPlugin from '@swup/head-plugin';
 import SwupPreloadPlugin from '@swup/preload-plugin';
 import SwupScriptsPlugin from '@swup/scripts-plugin';
+import SwupRouteNamePlugin from '@swup/scripts-plugin';
 import Swup from 'swup';
 import { Scroll } from '@scripts/classes/Scroll';
-import { gsap } from "gsap/dist/gsap";
+import { gsap } from 'gsap/dist/gsap';
+import Typed from '/node_modules/typed.js';
+import { PortfolioAccordionsMechanic } from 'src/components/PortfolioAccordions/PortfolioAccordions'
+
 
 export class Transitions {
     static readonly READY_CLASS = 'is-ready';
@@ -18,42 +22,91 @@ export class Transitions {
 
     private swup: Swup | undefined;
 
+    
+
     constructor() {
         this.onVisitStartBind = this.onVisitStart.bind(this);
         this.beforeContentReplaceBind = this.beforeContentReplace.bind(this);
         this.onContentReplaceBind = this.onContentReplace.bind(this);
         this.onAnimationInEndBind = this.onAnimationInEnd.bind(this);
         this.onAnimationOutStartBind = this.onAnimationOutStart.bind(this);
+
     }
 
     // =============================================================================
     // Lifecycle
     // =============================================================================
+    
+
     init() {
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+          }
         this.initSwup();
 
-        requestAnimationFrame(() => {
-            document.documentElement.classList.add(Transitions.READY_CLASS);
-        });
-        gsap.fromTo(".u-heading-h1",
-        { "--elephant-text-weight": 200, 
-        opacity:0,
-     //   yPercent:-30
-    },
-        { "--elephant-text-weight": 600, 
-        delay:.4,
-        opacity:1,
-      //  yPercent:0,
-        duration: 1,
-        ease: "back.out",
-        overwrite: true });
-        
-        gsap.to(".u-loader",
-        { height:0, 
-        duration: 1,
-        ease: "expo",
-        overwrite: true });
 
+
+        if (window.location.pathname == "/post") {
+            const portFo = new PortfolioAccordionsMechanic;
+            portFo.init();
+            window.addEventListener( 'resize', onWindowResize );
+
+            function onWindowResize() {
+             portFo.destroy();
+             portFo.init();
+            }
+          }
+
+
+        requestAnimationFrame(() => {
+        //Scroll.stop();
+
+       document.documentElement.classList.add(Transitions.READY_CLASS);
+            //Scroll.scrollTo(200, {duration:30, force:true, lock:true})
+            
+            setTimeout(srollWaitForAnim, 1800);
+            
+        });
+
+        
+        function srollWaitForAnim() {
+            Scroll.start();
+            Scroll.scrollTo(0, {immediate:true, force:true, lock:true})
+        }
+        if (document.getElementById("typed") != null) {
+            var myEle = document.getElementById("typed");
+            if(myEle) {
+                var typed = new Typed('#typed', {
+                    strings: ['&#60;OUR STORY/&#62;'],
+                    loop: false,
+                    typeSpeed: 20,
+                    shuffle: true,
+                    startDelay: 2000,
+                    cursorChar: '▮'
+                    });
+                        }
+          }
+          if (document.getElementById("typedWork") != null) {
+            var myEle = document.getElementById("typedWork");
+            if(myEle) {
+                var typed = new Typed('#typedWork', {
+                    strings: ['&#60;Elephant\'s Memory/&#62;'],
+                    loop: false,
+                    typeSpeed: 20,
+                    shuffle: true,
+                    startDelay: 2000,
+                    cursorChar: '▮'
+                    });
+                        }
+          }
+
+        
+
+     //   gsap.to('.u-loader img', { scale: 0, duration: .5, ease: 'circ.in', overwrite: true,onComplete: hideLoader() });
+     //   function hideLoader() {
+     //   gsap.to('.u-loader', { height: 0, duration: 1.2, ease: CustomEase.create("custom", '0.075, 0.82, 0.165, 1'), overwrite: true });
+     //   };
+        
     }
 
     destroy() {
@@ -64,9 +117,19 @@ export class Transitions {
     // Methods
     // =============================================================================
     initSwup() {
+        
         this.swup = new Swup({
-            animateHistoryBrowsing: true,
+            //animateHistoryBrowsing: true,
+
             plugins: [
+                new SwupRouteNamePlugin({
+                    routes: [
+                      { name: 'home', path: '/' },
+                      { name: 'post', path: '/post' },
+                      { name: 'about', path: '/about' }
+                    ],
+                    paths: true
+                  }),
                 new SwupHeadPlugin({
                     persistAssets: true,
                     awaitAssets: true
@@ -75,10 +138,16 @@ export class Transitions {
                     preloadHoveredLinks: true,
                     preloadInitialPage: !import.meta.env.DEV
                 }),
-                new SwupScriptsPlugin()
+                new SwupScriptsPlugin(
+
+
+                )
             ]
         });
-
+this.swup.hooks.on('visit:start', (visit) => {
+  console.log('Coming from route', visit.from.route);
+  console.log('Going to route', visit.to.route);
+});
         this.swup.hooks.on('visit:start', this.onVisitStartBind);
         this.swup.hooks.before('content:replace', this.beforeContentReplaceBind);
         this.swup.hooks.on('content:replace', this.onContentReplaceBind);
@@ -112,8 +181,6 @@ export class Transitions {
         Object.entries(newDataset).forEach(([key, val]) => {
             document.documentElement.setAttribute(`data-${toDash(key)}`, val ?? '');
         });
-
-        
     }
 
     // =============================================================================
@@ -128,17 +195,13 @@ export class Transitions {
      * @param visit: VisitType
      */
     onVisitStart() {
+
         document.documentElement.classList.add(Transitions.TRANSITION_CLASS);
         document.documentElement.classList.remove(Transitions.READY_CLASS);
-        
-        gsap.to(".u-heading-h1",
-        { "--elephant-text-weight":900, 
-        opacity:1,
-        duration: 1,
-        ease: "power3",
-        overwrite: true });
-
-
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+          }
+  
     }
 
     /**
@@ -149,10 +212,12 @@ export class Transitions {
      * @param visit: VisitType
      */
     beforeContentReplace() {
+
         Scroll?.destroy();
-
-
-        
+        if (window.location.pathname === "/post") {
+            const portFo = new PortfolioAccordionsMechanic;
+            portFo.destroy()
+          }
     }
 
     /**
@@ -166,14 +231,7 @@ export class Transitions {
         Scroll?.init();
         this.updateDocumentAttributes(visit);
 
-        gsap.to(".u-heading-h1",
-        { "--elephant-text-weight": 600, 
-        opacity:1,
-        duration: 1,
-        ease: "expo",
-        overwrite: true });
-        
-        
+
     }
 
     /**
@@ -184,12 +242,7 @@ export class Transitions {
      * @param visit: VisitType
      */
     onAnimationOutStart() {
-        gsap.to(".u-heading-h1",
-            { "--elephant-text-weight": 0, 
-            opacity:0,
-            duration: 1,
-            ease: "power3",
-            overwrite: true });
+
     }
 
     /**
@@ -200,10 +253,39 @@ export class Transitions {
      * @param visit: VisitType
      */
     onAnimationInEnd() {
+
+        if (window.location.pathname == "/post") {
+            const portFo = new PortfolioAccordionsMechanic;
+            portFo.init()
+          }
+        if (document.getElementById("typed") != null) {
+            var myEle = document.getElementById("typed");
+            if(myEle) {
+                var typed = new Typed('#typed', {
+                    strings: ['&#60;OUR STORY/&#62;'],
+                    loop: false,
+                    typeSpeed: 20,
+                    shuffle: true,
+                    startDelay: 2000,
+                    cursorChar: '▮'
+                    });
+                        }
+          }
+
+
+
         document.documentElement.classList.remove(Transitions.TRANSITION_CLASS);
         document.documentElement.classList.add(Transitions.READY_CLASS);
 
+            //const section1 = document.getElementById("section_1");
+            //const body = document.getElementById("body");
+            //section1.style.zIndex = '999';
+            //body.style.position = 'relative';
+            Scroll.start();
+            
+            Scroll.scrollTo(0, {duration:30, force:true, lock:true})
+        
 
     }
-    
+
 }

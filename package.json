@@ -35,21 +35,27 @@
         "astro": "^4.15.9",
         "astro-seo": "^0.8.4",
         "astro-svg-sprite": "^1.1.0",
-        "gsap": "^3.12.5",
+        "gsap": "^3.12.7",
+        "lil-gui": "^0.20.0",
         "locomotive-scroll": "^5.0.0-beta.21",
         "nanostores": "^0.11.3",
         "sass": "^1.77.4",
+        "splitting": "^1.1.0",
         "swup": "^4.7.0",
+        "three": "^0.169.0",
         "ts-debounce": "^4.0.0",
+        "typed.js": "^2.1.0",
         "typescript": "^5.4.5"
     },
     "devDependencies": {
         "@locomotivemtl/postcss-remove-double-parentheses": "^1.0.0",
         "@locomotivemtl/postcss-tailwind-shortcuts": "^1.0.5",
+        "@monogrid/gainmap-js": "^3.0.6",
         "prettier": "^3.3.1",
         "prettier-plugin-astro": "^0.14.0",
         "prettier-plugin-tailwindcss": "^0.6.1",
-        "simple-git-hooks": "^2.11.1"
+        "simple-git-hooks": "^2.11.1",
+        "vite": "^5.4.8"
     },
     "simple-git-hooks": {
         "pre-commit": "npm run format"

@@ -30,14 +30,29 @@
     //     font-style: normal;
     //     font-display: swap;
     // }
-    
+
     @font-face {
         src: url('/fonts/RadioCanada-VariableFont_wdth,wght.ttf') format('ttf');
-        font-family: "Radio Canada", sans-serif;
+        font-family: 'Radio Canada', sans-serif;
         font-optical-sizing: auto;
-       // font-weight: 1;
+        // font-weight: 1;
         font-style: normal;
-      }
+    }
+    @font-face {
+        src: url('/fonts/WorkSans-VariableFont_wght.ttf') format('ttf');
+        font-family: 'Work Sans', sans-serif;
+        font-optical-sizing: auto;
+        // font-weight: 1;
+        font-style: normal;
+    }
+    @font-face {
+        src: url('/fonts/Montserrat-VariableFont_wght.ttf') format('ttf');
+        font-family: 'Montserrat 7.2', sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 1;
+        font-style: normal;
+    }
+
 }
 
 // ==========================================================================
@@ -79,13 +94,38 @@
 html {
     font-family: theme('fontFamily.sans');
     -webkit-font-smoothing: antialiased;
+    overscroll-behavior: none;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: 100%; 
+}
+html, body {
+    width: 100vw;
+    height: 100vh;
+   // scrollbar-gutter: stable;
+    scrollbar-gutter: auto;
+ }
+html.is-ready{
+//cursor: auto;
+overflow-y: auto;
+}
 
+html:not(is-ready){
+    height: 100%; 
+    overflow-y: hidden;
+    cursor: wait;
 }
 
 body {
     background: var(--color-secondary);
     color: var(--color-primary);
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: 100%; 
+    //position:fixed
 }
+
+
 
 ::selection {
     background-color: var(--color-primary);
@@ -95,7 +135,7 @@ body {
 
 /* Define a transition duration during page visits */
 html.is-changing .transition-fade {
-    transition: opacity 0.35s;
+    transition: opacity 1.5s;
     opacity: 1;
     cursor: wait;
 }
@@ -114,6 +154,98 @@ html.is-animating .transition-fade {
     padding: theme-spacing('fluid-sm');
     z-index: theme-z();
 }
-.is-transitioning{
+.is-transitioning {
     cursor: wait;
 }
+
+
+#typed, #typedWork{
+    position: relative ;
+}
+.typed-cursor {
+    line-height: 1.6vw;
+    color: #0969fc;
+    font-size: 3.5vw;
+    animation: typedjsBlink 0.7s infinite;
+    -webkit-animation: typedjsBlink 0.7s infinite;
+    animation: typedjsBlink 0.7s infinite;
+}
+
+.c-scrollbar_thumb {
+    color: #0969fc;
+}
+main  {
+    padding-top:80px
+    }
+.stop-scrolling {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  
+.blurryBlocks{
+    backdrop-filter: blur(50px);
+  }
+
+  video {
+    position: absolute;
+    top: -81vh;
+    left: 0;
+    min-width: 170vw;
+    min-height: 170vh;
+    z-index: -100;
+    opacity: 0.8;
+  }
+
+  article{
+    overflow: hidden;
+    align-content: start;
+height: 140px;
+row-gap:20px;
+background-color: white;
+  }
+
+  .inner  {
+    row-gap: 20px;
+    height: fit-content;
+    align-content: start;
+    padding-bottom: 20px;
+}
+.image{
+    opacity: 0;
+    visibility: hidden;
+
+
+    overflow: hidden;
+}
+.image .c-image_inner {
+    max-height: 40vh;
+
+}
+
+
+
+.paragraph{
+        transform: translate3d(0, 1.5rem, 0);
+        opacity:0;
+        clip-path: inset(0 0 100% 0);
+        transition: opacity .6s cubic-bezier(0.215, 0.61, 0.355, 1),transform .6s cubic-bezier(0.215, 0.61, 0.355, 1), clip-path .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+        line-height: 1.5em;   
+        padding:10px 0;
+        height:60px
+    }
+
+.paragraph.is-inview{
+            transform: translateY(0) rotateX(0);
+            opacity:1;
+            clip-path: inset(0 0 -10% 0);
+}
+.paragraph h2 a:after {
+    content: attr(data-count);
+    position: absolute;
+    font-size: 14px;
+    margin-left: 6px;
+}
+
+#portfoliosSection { position: relative; min-height: 100vh; }
+.accordian, .accordion { overflow: hidden; height: 100px; will-change: height; }

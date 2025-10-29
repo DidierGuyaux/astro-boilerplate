@@ -6,8 +6,8 @@
 
     margin-right: auto;
     margin-left: auto;
-    padding-left: var(--container-margin);
-    padding-right: var(--container-margin);
+    padding-left: 40px;
+    padding-right: 40px;
 
     @media (screen(sm)) {
         --container-margin: theme-spacing('containerMargin');

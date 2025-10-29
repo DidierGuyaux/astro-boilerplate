@@ -2,44 +2,58 @@
 import Layout from '@layouts/Layout.astro';
 import Icon from '@components/Icon/Icon.astro';
 import Blocks from '@components/Blocks/Blocks.astro';
+import Image from '@components/Image/Image.astro';
+import Button from '@components/Button/Button.astro';
+import { useEffect } from 'astro:head';
 
-// Define the blocks for this post. This could be fetched from a CMS.
-const blocks = [
-    {
-        type: 'text',
-        data: {
-            body: `<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque quam, nam omnis sunt laudantium tenetur obcaecati? Inventore eos vitae id repellat cum possimus voluptates nam voluptatum, assumenda, atque nesciunt debitis?</p>`
-        }
-    },
-    {
-        type: 'image',
-        data: {
-            src: 'https://locomotive.ca/uploads/careers/fullscreen-image-2000w.jpg',
-            alt: 'An image',
-            caption: 'Image caption'
-        }
-    },
-    { type: 'text', data: { body: '<p>This a content block</p>' } },
-    {
-        type: 'text',
-        data: {
-            body: `<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque quam, nam omnis sunt laudantium tenetur obcaecati? Inventore eos vitae id repellat cum possimus voluptates nam voluptatum, assumenda, atque nesciunt debitis?</p>`
-        }
-    }
-];
+import PortfolioAccordions from '@components/PortfolioAccordions/PortfolioAccordions.astro';
+
+
 ---
 
-<Layout title="Post title">
-    <header class="u-container">
-        <Icon name="logo" />
-        <h1 class="u-heading-h1">Post title</h1>
+<Layout title="Projects">
+        <header class="u-container" style="height: 0vh;display: flex;align-items: start;}" >
+        <h3 id="typedWork" class="u-heading-h3" style="display:inline-block"></h3>
+        <h1 id="test" class="u-heading-h1" data-scroll data-scroll-ignore-fold>
+            Big and small projects, crafting experiences that drive impact.
+        </h1>
     </header>
 
-    <div class="u-container u-mt-fluid-xl">
-        <Blocks blocks={blocks} />
 
-        <!-- Placeholder -->
-        <div class="w-full u-mt-fluid-xl u-h-[50vh] u-bg-black u-opacity-50"></div>
-        <div class="w-full u-mt-fluid-xl u-h-[50vh] u-bg-primary"></div>
+    <div id="portfoliosContainer" class="u-container u-mt-fluid-xl portfoliosContainer" style="margin:80vh 0 0 0;padding:0 40px" 
+    data-scroll 
+    data-scroll-event-progress="progressEvent"
+    data-scroll-offset="60%, 80%"
+
+    >
+
+    <div class="portfolioLoader" style="
+    width:0%;
+    height:1px;
+    background-color:black;
+    display:block;
+    position:absolute
+    
+    "></div>
+<section id="portfoliosSection">
+    <PortfolioAccordions client:load />
+
     </div>
+</section>
+   <div class="u-container" id="section_6"  >
+    	<Image
+                                    src="https://elephant.ca/wp-content/uploads/2024/10/elephant-v2.jpg"
+                                    alt="A photograph of Françoise Guyaux smiling at the camera, in front of trees."
+                                    caption=""
+                                    loading="lazy"
+                                    width={3000}
+                                    height={2000}
+                                    data-scroll
+                      
+        />
+    </div>
+    
 </Layout>
+
+
+

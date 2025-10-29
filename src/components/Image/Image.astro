@@ -11,7 +11,7 @@ export interface Props {
     class?: string;
     sizes?: string;
     widths?: number[];
-    loading?: 'eager' | 'lazy';
+    loading?: 'eager' | 'lazy'
 }
 
 const {
@@ -58,11 +58,15 @@ const classes = [
                     alt={alt}
                     loading={loading}
                     onload={onLoad}
+
+
+
                 />
             </div>
 
-            {caption && <CaptionTag class="c-image_caption">{caption}</CaptionTag>}
-        </Tag>
+            {caption && <CaptionTag class="c-image_caption u-p " style="margin-top: 15px;font-size:1em;display: flex;flex-direction: column;justify-content: flex-start;align-items: flex-start;gap: 5px;" data-scroll data-scroll-offset><svg class="" style="width:40px;height:40px;transform: scaleX(-1);    margin: -9px;"><svg viewBox="0 0 28 28" id="svg9226297046"><path d="M 7.467 21 L 5.833 19.367 L 17.033 8.167 L 7 8.167 L 7 5.833 L 21 5.833 L 21 19.833 L 18.667 19.833 L 18.667 9.8 Z" fill="#0a6bfe"></path></svg></svg>
+{caption}</CaptionTag>}
+</Tag>
     )
 }
 

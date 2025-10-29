@@ -3,16 +3,16 @@
 // ===================================================================
 :root {
     // Metrics
-    --button-height: auto;
-    --button-width: auto;
+    --button-height: 20px;
+    --button-width: fit-content;
     --button-radius: 0px;
-    --button-font-size: #{theme('fontSize.button')};
-    --button-padding: 15px 28px;
+    --button-font-size: 16px;
+    --button-padding: 0;
     --button-gap: 25px;
 
     // Idle state - Default styles
-    --button-color: #{theme-color('white')};
-    --button-background: #{theme-color('black')};
+    --button-color: #0969fc;
+    --button-background: white;
     --button-stroke-color: transparent;
 
     // Hover state - Default styles
@@ -25,6 +25,9 @@
 }
 
 .c-button {
+    border-bottom: #0969fc 1px solid;
+    justify-self: self-end;
+    align-self: center;
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -35,7 +38,7 @@
     padding: var(--button-padding);
     font-size: var(--button-font-size);
     background-color: var(--button-background);
-    border: 1px solid var(--button-stroke-color);
+    border: var(--button-stroke-color);
     transition: background-color theme-speed() theme-ease();
 
     // Hover
