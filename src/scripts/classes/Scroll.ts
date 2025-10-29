@@ -15,12 +15,17 @@ export class Scroll {
     static init() {
         this.locomotiveScroll = new LocomotiveScroll({
             lenisOptions: {
-                lerp: 0.1,
-                duration: 2,
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) // https://www.desmos.com/calculator/brs54l4xou
+                autoStart: true,
+                smoothTouch: false,
+                touchMultiplier: 1,
+                resetNativeScroll: true,
+                syncTouch: true,
+                overscroll: true,
+            ////////    lerp: 0.1,
+            //////    duration: 2,
+            ////    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) // https://www.desmos.com/calculator/brs54l4xou
             },
-            autoStart: true,
-            resetNativeScroll: true,
+ 
             triggerRootMargin: '-1px -1px -1px -1px',
             rafRootMargin: '100% 100% 100% 100%',
             initCustomTicker: (render) => {
@@ -39,6 +44,10 @@ export class Scroll {
                 });
             }
         });
+
+        // 🚀 FIX: Synchronize the internal scroll library position to the browser's
+        // current scroll position immediately on page load/init if not at the top.
+        this.locomotiveScroll.scrollTo(0, { immediate:true })
         //Scroll.scrollTo(0,{immediate:true});
         //Scroll.stop();
         console.log(this.locomotiveScroll);
@@ -52,6 +61,7 @@ export class Scroll {
             old: this.locomotiveScroll.scroll?.instance?.options
         });
     }
+
 
     static destroy() {
         this.locomotiveScroll?.destroy();

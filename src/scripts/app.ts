@@ -12,7 +12,8 @@ import 'splitting/dist/splitting.css';
 import 'splitting/dist/splitting-cells.css';
 import Splitting from 'splitting';
 
-window.scrollTo(0, 0);
+history.scrollRestoration && (history.scrollRestoration = "manual",
+window.scrollTo(0, 0)),
 
 Splitting();
 
@@ -24,7 +25,13 @@ const transitions = new Transitions();
 transitions.init();
 
 // Initialize the Scroll class
-Scroll.init();
+
+    Scroll.init();
+
+
+
+
+
 
 // Initialize the Grid helper
 if (import.meta.env.MODE === 'development') {

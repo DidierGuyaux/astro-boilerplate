@@ -17,6 +17,7 @@ const FONTS: string[] = [
     // 'WebfontRegular.woff2',
     // 'WebfontBold.woff2',
 ];
+
 ---
 
 <!doctype html>
@@ -53,6 +54,11 @@ const FONTS: string[] = [
         />
     </head>
     <body id="body">
+    <script>
+            if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+        </script>
         <div class="u-loader"><img src="/assets/images/eleph_loader_logo.png" /></div>
         <div class="u-container" style="height: 80px;position:fixed">
             <nav class="u-flex u-gap-gutter u-py-fluid-md">

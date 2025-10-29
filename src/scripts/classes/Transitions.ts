@@ -35,7 +35,7 @@ export class Transitions {
 
     init() {
         window.onbeforeunload = function () {
-            window.scrollTo(0, 0);
+         //   window.scrollTo(0, 0);
         };
         this.initSwup();
 
@@ -61,7 +61,6 @@ export class Transitions {
 
         function srollWaitForAnim() {
             Scroll.start();
-            Scroll.scrollTo(0, { immediate: true, force: true, lock: true });
         }
         if (document.getElementById('typed') != null) {
             var myEle = document.getElementById('typed');
@@ -178,11 +177,10 @@ export class Transitions {
      * @param visit: VisitType
      */
     onVisitStart() {
+
         document.documentElement.classList.add(Transitions.TRANSITION_CLASS);
         document.documentElement.classList.remove(Transitions.READY_CLASS);
-        window.onbeforeunload = function () {
-            window.scrollTo(0, 0);
-        };
+
     }
 
     /**
@@ -193,6 +191,10 @@ export class Transitions {
      * @param visit: VisitType
      */
     beforeContentReplace() {
+        window.scrollTo(0, 0); 
+        
+        // 2. Force the Locomotive Scroll library's internal position to the top.
+        Scroll?.scrollTo(0, { immediate: true });
         Scroll?.destroy();
         if (window.location.pathname === '/post') {
             const portFo = new PortfolioAccordionsMechanic();
@@ -209,6 +211,7 @@ export class Transitions {
      */
     onContentReplace(visit: VisitType) {
         Scroll?.init();
+
         this.updateDocumentAttributes(visit);
     }
 
@@ -256,6 +259,6 @@ export class Transitions {
         //body.style.position = 'relative';
         Scroll.start();
 
-        Scroll.scrollTo(0, { duration: 30, force: true, lock: true });
+        //Scroll.scrollTo(0, { duration: 30, force: true, lock: true });
     }
 }
