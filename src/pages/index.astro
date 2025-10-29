@@ -5,165 +5,308 @@ import Wysiwyg from '@components/Wysiwyg/Wysiwyg.astro';
 import Accordion from '@components/Accordion/Accordion.astro';
 import Image from '@components/Image/Image.astro';
 import ElephantModel from '@components/ElephantModel/ElephantModel.astro';
-import Typed from '/node_modules/typed.js'
-
-
+import Typed from '/node_modules/typed.js';
 
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Elephant">
-    <header class="u-container" style="height: 0vh;display: flex;align-items: start;}" >
+    <header class="u-container" style="height: 0vh;display: flex;align-items: start;}">
         <h3 id="typed" class="u-heading-h3" style="display:inline-block"></h3>
         <h1 id="test" class="u-heading-h1" data-scroll data-scroll-ignore-fold>
             The gentle and wise animal exemplifies focused power and strength.
         </h1>
     </header>
 
-<ElephantModel/>
+    <ElephantModel />
 
-        <section class="u-container u-grid u-grid-cols-12" style="gap:40px;padding:160px 10vw 160px 10vw;position: relative;background-color: white;align-items:start;z-index:98" id="section_1" data-scroll-section>
-                    <p class="u-p u-col-span-1 u-col-start-1 date" style="color:#0a69fe;text-align:left;width: fit-content;" data-scroll data-scroll-offset='20%,0' data-scroll-ignore-fold>(1999)</p>             
-                    <Image
-                                        src="https://elephant.ca/wp-content/uploads/2024/10/Francoise_1.jpg"
-                                        alt="A photograph of Françoise Guyaux smiling at the camera, in front of trees."
-                                        caption=""
-                                        loading="lazy"
-                                        width={500}
-                                        height={500}
-                                        data-scroll
-                                        class="u-col-span-3 u-col-start-2"
-                                        data-scroll-offset='20%,0' data-scroll-ignore-fold
-                    />
-                    <div class="u-col-span-8 u-col-start-5 u-grid u-grid-cols-12" style="gap:40px">         
- 
-                        <h2 class="u-heading-h2 u-col-span-9 u-col-start-2" data-scroll data-scroll-offset='20%,0' data-scroll-ignore-fold>Founded in 1999, Elephant is the brainchild of Françoise Guyaux</h2>
-                        <p class="u-p u-col-span-9 u-col-start-2" style="max-width: 50rem;" data-splitting="lines" data-scroll data-scroll-offset='10%' data-scroll-ignore-fold>“Just hearing the word ‘elephant’ evokes power, honor, stability, patience. In places where they live, the elephant is a symbol used to bring luck, fertility, protection and is thought of as a blessing upon all new projects.</p>
-                        <p class="u-p u-col-span-7 u-col-start-6" style="text-align: right;" data-splitting="lines" data-scroll data-scroll-offset='20%' data-scroll-ignore-fold>...But beyond that, I simply love elephants!”</p>
+    <section
+        class="u-container u-grid u-grid-cols-12"
+        style="gap:40px;padding:160px 10vw 160px 10vw;position: relative;background-color: white;align-items:start;z-index:98"
+        id="section_1"
+        data-scroll-section
+    >
+        <p
+            class="u-p date u-col-span-1 u-col-start-1"
+            style="color:#0a69fe;text-align:left;width: fit-content;"
+            data-scroll
+            data-scroll-offset="20%,0"
+            data-scroll-ignore-fold
+        >
+            (1999)
+        </p>
+        <Image
+            src="https://elephant.ca/wp-content/uploads/2024/10/Francoise_1.jpg"
+            alt="A photograph of Françoise Guyaux smiling at the camera, in front of trees."
+            caption=""
+            loading="lazy"
+            width={500}
+            height={500}
+            data-scroll
+            class="u-col-span-3 u-col-start-2"
+            data-scroll-offset="20%,0"
+            data-scroll-ignore-fold
+        />
+        <div class="u-col-span-8 u-col-start-5 u-grid u-grid-cols-12" style="gap:40px">
+            <h2
+                class="u-heading-h2 u-col-span-9 u-col-start-2"
+                data-scroll
+                data-scroll-offset="20%,0"
+                data-scroll-ignore-fold
+            >
+                Founded in 1999, Elephant is the brainchild of Françoise Guyaux
+            </h2>
+            <p
+                class="u-p u-col-span-9 u-col-start-2"
+                style="max-width: 50rem;"
+                data-splitting="lines"
+                data-scroll
+                data-scroll-offset="10%"
+                data-scroll-ignore-fold
+            >
+                “Just hearing the word ‘elephant’ evokes power, honor, stability, patience. In
+                places where they live, the elephant is a symbol used to bring luck, fertility,
+                protection and is thought of as a blessing upon all new projects.
+            </p>
+            <p
+                class="u-p u-col-span-7 u-col-start-6"
+                style="text-align: right;"
+                data-splitting="lines"
+                data-scroll
+                data-scroll-offset="20%"
+                data-scroll-ignore-fold
+            >
+                ...But beyond that, I simply love elephants!”
+            </p>
+        </div>
+    </section>
 
+    <section
+        class="u-container u-grid u-grid-cols-12"
+        style="gap:40px;padding:160px 10vw 160px 10vw;border-top: 1.5px solid #0a69fe;position: relative;background-color: white;align-items:start;"
+        id="section_2"
+        data-scroll-section
+    >
+        <p
+            class="u-p date u-col-span-1 u-col-start-1"
+            style="color:#0a69fe;text-align:left;width: fit-content;"
+            data-scroll
+            data-scroll-offset="20%,0"
+            data-scroll-ignore-fold
+        >
+            (2010)
+        </p>
+        <Image
+            src="https://elephant.ca/wp-content/uploads/2024/10/Screenshot-2024-10-17-at-3.41.00 PM.png"
+            alt="A photograph of Françoise Guyaux smiling at the camera, in front of trees."
+            caption="The Milles Vies web experience."
+            loading="lazy"
+            width={500}
+            height={500}
+            data-scroll
+            data-scroll-offset="20%"
+            data-scroll-ignore-fold
+            class="u-col-span-3 u-col-start-2"
+        />
+        <div
+            class="u-col-span-8 u-col-start-5 u-grid u-grid-cols-12"
+            style="gap:2vw;align-content:start"
+        >
+            <h2
+                class="u-heading-h2 u-col-span-11 u-col-start-2"
+                style="position: relative;"
+                data-scroll
+                data-scroll-offset="20%"
+                data-scroll-ignore-fold
+            >
+                A ton of websites and an award-winning project with the City of Montreal
+            </h2>
+            <p
+                class="u-p u-col-span-6 u-col-start-2"
+                style="padding-right: 10%;"
+                data-splitting="lines"
+                data-scroll
+                data-scroll-offset="15%"
+                data-scroll-ignore-fold
+            >
+                Françoise developped the web presence of many businesses and organizations in her
+                community. Throughout the years, she developped more than 20 sites, especially in
+                the Halifax buddhist community.
+            </p>
+            <p
+                class="u-p u-col-span-5 u-col-start-8"
+                data-splitting="lines"
+                data-scroll
+                data-scroll-offset="20%"
+                data-scroll-ignore-fold
+            >
+                In 2010 Elephant realized the "Milles Vies" project with the City of Montreal. The
+                interactive experience won a Boomerang prize.
+            </p>
+        </div>
+    </section>
 
-                    </div>
-                
-        </section>
+    <section
+        class="u-container u-grid u-grid-cols-12"
+        style="gap:20px;padding:160px 10vw 160px 10vw;border-top: 1.5px solid #0a69fe;position: relative;background-color: white"
+        id="section_3"
+        data-scroll-section
+    >
+        <p
+            class="u-p date u-col-span-1 u-col-start-1"
+            style="color:#0a69fe;text-align:left;width: fit-content;"
+            data-scroll
+            data-scroll-offset="20%,0"
+            data-scroll-ignore-fold
+        >
+            (2020 <br />&nbsp;&nbsp;- 23)
+        </p>
 
+        <Image
+            src="https://elephant.ca/wp-content/uploads/2024/10/Francoise_2.jpg"
+            alt="A photograph of Françoise Guyaux smiling at the camera, in front of trees."
+            loading="lazy"
+            width={3000}
+            height={3000}
+            data-scroll
+            class="u-col-span-3 u-col-start-2"
+        />
+        <div class="u-col-span-8 u-col-start-5 u-grid u-grid-cols-8" style="">
+            <Image
+                src="https://elephant.ca/wp-content/uploads/2024/10/Logo_white_bg.jpg"
+                alt="A photograph of Françoise Guyaux smiling at the camera, in front of trees."
+                caption="Can you spot the Elephant trunk?"
+                loading="lazy"
+                width={1}
+                height={1}
+                data-scroll
+                class="u-col-span-2 u-col-start-2"
+                style="align-self: center;width:200px"
+            />
+            <h2
+                class="u-heading-h2 u-col-span-4 u-col-start-5"
+                style="display: block;position: relative;"
+                data-scroll
+                data-scroll-offset="20%"
+                data-scroll-ignore-fold
+            >
+                A dedicated painter, Elephant was an extension of her visual arts practice.
+            </h2>
+            <p
+                class="u-p u-col-span-4 u-col-start-5"
+                style="display:block;width:100%;position:relative;"
+            >
+                From 2020 onward, she mentored me and I took the helm of Elephant after her passing
+                in 2023.
+            </p>
+        </div>
+    </section>
+    <section
+        class="u-container u-grid u-grid-cols-12"
+        style="gap:20px;padding:160px 10vw 160px 10vw;border-top: 1.5px solid #0a69fe;position: relative;background-color: white;"
+        id="section_4"
+    >
+        <p
+            class="u-p u-col-span-1 u-col-start-1"
+            style="color:#0a69fe;text-align:left;width: fit-content;"
+        >
+            (2024+)
+        </p>
+        <Image
+            src="https://markwinitskytherapy.com/wp-content/uploads/2018/06/bio-portrait-placeholder.jpg"
+            alt="A photograph of Françoise Guyaux smiling at the camera, in front of trees."
+            caption=""
+            loading="lazy"
+            width={200}
+            height={300}
+            data-scroll
+            class="u-col-span-3 u-col-start-2"
+        />
+        <div class="u-col-span-8 u-col-start-6 u-grid u-grid-cols-7" style="">
+            <h2
+                class="u-heading-h2 u-col-span-8 u-col-start-1"
+                style="display: block;position: relative;"
+            >
+                Now and onward
+            </h2>
 
+            <p class="u-p u-col-span-4 u-col-start-1" style="">
+                In 2023, Françoise passed away and I took over the helm. I had been working with my
+                aunt for close to 5 years now and she was great mentor.
+            </p>
+            <p class="u-p u-col-span-4 u-col-start-1" style="">Here are stuff I like:</p>
 
+            <ol class="u-list u-col-span-8 u-col-start-1" style="width:100%;align-items: center;">
+                <li class="gap-0 u-grid u-grid-cols-8" style="width:100%;align-items: center">
+                    <p
+                        class="u-p u-col-span-3 u-col-start-1"
+                        style="display:block;width:100%;position:relative;font-size: 1.6vw;font-weight: 500;font-family: 'Radio Canada';"
+                    >
+                        Photography
+                    </p>
+                    <p
+                        class="u-p u-col-span-5 u-col-start-4"
+                        style="display:block;width:100%;position:relative;font-size: 1.1vw;;"
+                    >
+                        (I photographed more than 25k people…)
+                    </p>
+                </li>
+                <li class="gap-0 u-grid u-grid-cols-8" style="width:100%;align-items: center">
+                    <p
+                        class="u-p u-col-span-3 u-col-start-1"
+                        style="display:block;width:100%;position:relative;font-size: 1.6vw;font-weight: 500;font-family: 'Radio Canada';"
+                    >
+                        Graphic Novels
+                    </p>
+                    <p
+                        class="u-p u-col-span-5 u-col-start-4"
+                        style="display:block;width:100%;position:relative;font-size: 1.1vw;"
+                    >
+                        (I'm working on one!)
+                    </p>
+                </li>
+                <li class="gap-0 u-grid u-grid-cols-8" style="width:100%;align-items: center">
+                    <p
+                        class="u-p u-col-span-3 u-col-start-1"
+                        style="display:block;width:100%;position:relative;font-size: 1.6vw;font-weight: 500;font-family: 'Radio Canada';"
+                    >
+                        Fixing things
+                    </p>
+                    <p
+                        class="u-p u-col-span-5 u-col-start-4"
+                        style="display:block;width:100%;position:relative;font-size: 1.1vw;"
+                    >
+                        (Right to repair for the win!)
+                    </p>
+                </li>
+                <li class="gap-0 u-grid u-grid-cols-8" style="width:100%;align-items: center">
+                    <p
+                        class="u-p u-col-span-3 u-col-start-1"
+                        style="display:block;width:100%;position:relative;font-size: 1.6vw;font-weight: 500;font-family: 'Radio Canada';"
+                    >
+                        Vintage Hi-Fi
+                    </p>
+                    <p
+                        class="u-p u-col-span-5 u-col-start-4"
+                        style="display:block;width:100%;position:relative;font-size: 1.1vw;"
+                    >
+                        (Which usually entails fixing them at some point...)
+                    </p>
+                </li>
+            </ol>
+        </div>
+    </section>
 
-         <section class="u-container u-grid u-grid-cols-12" style="gap:40px;padding:160px 10vw 160px 10vw;border-top: 1.5px solid #0a69fe;position: relative;background-color: white;align-items:start;" id="section_2"  data-scroll-section >
-                    <p class="u-p u-col-span-1 u-col-start-1 date" style="color:#0a69fe;text-align:left;width: fit-content;" data-scroll data-scroll-offset='20%,0' data-scroll-ignore-fold>(2010)</p>             
-                    <Image
-                                        src="https://elephant.ca/wp-content/uploads/2024/10/Screenshot-2024-10-17-at-3.41.00 PM.png"
-                                        alt="A photograph of Françoise Guyaux smiling at the camera, in front of trees."
-                                        caption="The Milles Vies web experience."
-                                        loading="lazy"
-                                        width={500}
-                                        height={500}
-                                        data-scroll
-                                        data-scroll-offset='20%' data-scroll-ignore-fold
-                                        class="u-col-span-3 u-col-start-2"
-                                />
-                    <div class="u-col-span-8 u-col-start-5 u-grid u-grid-cols-12" style="gap:2vw;align-content:start">         
- 
-                                    <h2 class="u-heading-h2 u-col-span-11 u-col-start-2" style="position: relative;" data-scroll data-scroll-offset='20%' data-scroll-ignore-fold>A ton of websites and an award-winning project with the City of Montreal</h2>
-                                    <p class="u-p u-col-span-6 u-col-start-2" style="padding-right: 10%;" data-splitting="lines" data-scroll data-scroll-offset='15%' data-scroll-ignore-fold>Françoise developped the web presence of many businesses and organizations in her community. Throughout the years, she developped more than 20 sites, especially in the Halifax buddhist community.</p>
-                                    <p class="u-p u-col-span-5 u-col-start-8" data-splitting="lines" data-scroll data-scroll-offset='20%' data-scroll-ignore-fold >In 2010 Elephant realized the "Milles Vies" project with the City of Montreal. The interactive experience won a Boomerang prize.</p>
-
-                    </div>
-                
-        </section>
-
-
-    	
-         <section class="u-container  u-grid u-grid-cols-12" style="gap:20px;padding:160px 10vw 160px 10vw;border-top: 1.5px solid #0a69fe;position: relative;background-color: white" id="section_3"  data-scroll-section >
-
-                    <p class="u-p u-col-span-1 u-col-start-1 date" style="color:#0a69fe;text-align:left;width: fit-content;" data-scroll data-scroll-offset='20%,0' data-scroll-ignore-fold>(2020 <br>&nbsp;&nbsp;- 23)</p>             
-        
-                        <Image
-                                    src="https://elephant.ca/wp-content/uploads/2024/10/Francoise_2.jpg"
-                                    alt="A photograph of Françoise Guyaux smiling at the camera, in front of trees."
-                                    loading="lazy"
-                                    width={3000}
-                                    height={3000}
-                                    data-scroll
-                          
-                                    class="u-col-span-3 u-col-start-2"
-                            />
-                    <div class="u-col-span-8 u-col-start-5 u-grid u-grid-cols-8" style="">         
-                                <Image
-                                                    src="https://elephant.ca/wp-content/uploads/2024/10/Logo_white_bg.jpg"
-                                                    alt="A photograph of Françoise Guyaux smiling at the camera, in front of trees."
-                                                    caption="Can you spot the Elephant trunk?"
-                                                    loading="lazy"
-                                                    width={1}
-                                                    height={1}
-                                                    data-scroll
-                               
-                                                    class="u-col-span-2 u-col-start-2"
-                                                    style="align-self: center;width:200px"
-                                            />  
-                                <h2 class="u-heading-h2 u-col-span-4 u-col-start-5" style="display: block;position: relative;" data-scroll data-scroll-offset='20%' data-scroll-ignore-fold>A dedicated painter, Elephant was an extension of her visual arts practice.</h2>
-                                <p class="u-p u-col-span-4 u-col-start-5" style="display:block;width:100%;position:relative;">From 2020 onward, she mentored me and I took the helm of Elephant after her passing in 2023.</p>
-
-                                  </div>                              
-                                        
-        </section>
-        <section class="u-container  u-grid u-grid-cols-12" style="gap:20px;padding:160px 10vw 160px 10vw;border-top: 1.5px solid #0a69fe;position: relative;background-color: white;" id="section_4"  >
-    	    <p class="u-p u-col-span-1 u-col-start-1" style="color:#0a69fe;text-align:left;width: fit-content;">(2024+)</p>
-                        <Image
-                                    src="https://markwinitskytherapy.com/wp-content/uploads/2018/06/bio-portrait-placeholder.jpg"
-                                    alt="A photograph of Françoise Guyaux smiling at the camera, in front of trees."
-                                    caption=""
-                                    loading="lazy"
-                                    width={200}
-                                    height={300}
-                                    data-scroll
-                          
-                                    class="u-col-span-3 u-col-start-2"
-                            />
-                        <div class="u-col-span-8 u-col-start-6 u-grid u-grid-cols-7" style="">         
-                                <h2 class="u-heading-h2 u-col-span-8 u-col-start-1" style="display: block;position: relative;">Now and onward</h2>
-                                
-                                <p class="u-p u-col-span-4 u-col-start-1" style="">In 2023, Françoise passed away and I took over the helm. I had been working with my aunt for close to 5 years now and she was great mentor.</p>
-                                <p class="u-p u-col-span-4 u-col-start-1" style="">Here are stuff I like:</p>
-
-                                <ol class="u-list u-col-span-8 u-col-start-1" style="width:100%;align-items: center;">
-                                    <li class="u-grid u-grid-cols-8 gap-0" style="width:100%;align-items: center">
-                                            <p class="u-p u-col-span-3 u-col-start-1" style="display:block;width:100%;position:relative;font-size: 1.6vw;font-weight: 500;font-family: 'Radio Canada';">Photography</p>
-                                            <p class="u-p u-col-span-5 u-col-start-4" style="display:block;width:100%;position:relative;font-size: 1.1vw;;">(I photographed more than 25k people…)</p>
-                                    </li>
-                                    <li class="u-grid u-grid-cols-8 gap-0" style="width:100%;align-items: center">
-                                            <p class="u-p u-col-span-3 u-col-start-1" style="display:block;width:100%;position:relative;font-size: 1.6vw;font-weight: 500;font-family: 'Radio Canada';">Graphic Novels</p>
-                                            <p class="u-p u-col-span-5 u-col-start-4" style="display:block;width:100%;position:relative;font-size: 1.1vw;">(I'm working on one!)</p>
-                                    </li>
-                                    <li class="u-grid u-grid-cols-8 gap-0" style="width:100%;align-items: center">
-                                            <p class="u-p u-col-span-3 u-col-start-1" style="display:block;width:100%;position:relative;font-size: 1.6vw;font-weight: 500;font-family: 'Radio Canada';">Fixing things</p>
-                                            <p class="u-p u-col-span-5 u-col-start-4" style="display:block;width:100%;position:relative;font-size: 1.1vw;">(Right to repair for the win!)</p>
-                                    </li>
-                                    <li class="u-grid u-grid-cols-8 gap-0" style="width:100%;align-items: center">
-                                            <p class="u-p u-col-span-3 u-col-start-1" style="display:block;width:100%;position:relative;font-size: 1.6vw;font-weight: 500;font-family: 'Radio Canada';">Vintage Hi-Fi</p>
-                                            <p class="u-p u-col-span-5 u-col-start-4" style="display:block;width:100%;position:relative;font-size: 1.1vw;">(Which usually entails fixing them at some point...)</p>
-                                    </li>
-                                </ol>
-                        </div>
-               
-        </section>
-      
-     <spacer class="u-spacer" style="height:20vh;"></spacer>
-    <div class="u-container" id="section_6"  >
-    	<Image
-                                    src="https://elephant.ca/wp-content/uploads/2024/10/elephant-v2.jpg"
-                                    alt="A photograph of Françoise Guyaux smiling at the camera, in front of trees."
-                                    caption=""
-                                    loading="lazy"
-                                    width={3000}
-                                    height={2000}
-                                    data-scroll
-                      
+    <spacer class="u-spacer" style="height:20vh;"></spacer>
+    <div class="u-container" id="section_6">
+        <Image
+            src="https://elephant.ca/wp-content/uploads/2024/10/elephant-v2.jpg"
+            alt="A photograph of Françoise Guyaux smiling at the camera, in front of trees."
+            caption=""
+            loading="lazy"
+            width={3000}
+            height={2000}
+            data-scroll
         />
     </div>
-
-
-
-
-
 </Layout>

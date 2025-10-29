@@ -7,53 +7,49 @@ import Button from '@components/Button/Button.astro';
 import { useEffect } from 'astro:head';
 
 import PortfolioAccordions from '@components/PortfolioAccordions/PortfolioAccordions.astro';
-
-
 ---
 
 <Layout title="Projects">
-        <header class="u-container" style="height: 0vh;display: flex;align-items: start;}" >
+    <header class="u-container" style="height: 0vh;display: flex;align-items: start;}">
         <h3 id="typedWork" class="u-heading-h3" style="display:inline-block"></h3>
         <h1 id="test" class="u-heading-h1" data-scroll data-scroll-ignore-fold>
             Big and small projects, crafting experiences that drive impact.
         </h1>
     </header>
 
-
-    <div id="portfoliosContainer" class="u-container u-mt-fluid-xl portfoliosContainer" style="margin:80vh 0 0 0;padding:0 40px" 
-    data-scroll 
-    data-scroll-event-progress="progressEvent"
-    data-scroll-offset="60%, 80%"
-
+    <div
+        id="portfoliosContainer"
+        class="u-container portfoliosContainer u-mt-fluid-xl"
+        style="margin:80vh 0 0 0;padding:0 40px"
+        data-scroll
+        data-scroll-event-progress="progressEvent"
+        data-scroll-offset="60%, 80%"
     >
-
-    <div class="portfolioLoader" style="
+        <div
+            class="portfolioLoader"
+            style="
     width:0%;
     height:1px;
     background-color:black;
     display:block;
     position:absolute
     
-    "></div>
-<section id="portfoliosSection">
-    <PortfolioAccordions client:load />
-
+    "
+        >
+        </div>
+        <section id="portfoliosSection">
+            <PortfolioAccordions client:load />
+        </section>
     </div>
-</section>
-   <div class="u-container" id="section_6"  >
-    	<Image
-                                    src="https://elephant.ca/wp-content/uploads/2024/10/elephant-v2.jpg"
-                                    alt="A photograph of Françoise Guyaux smiling at the camera, in front of trees."
-                                    caption=""
-                                    loading="lazy"
-                                    width={3000}
-                                    height={2000}
-                                    data-scroll
-                      
+    <div class="u-container" id="section_6">
+        <Image
+            src="https://elephant.ca/wp-content/uploads/2024/10/elephant-v2.jpg"
+            alt="A photograph of Françoise Guyaux smiling at the camera, in front of trees."
+            caption=""
+            loading="lazy"
+            width={3000}
+            height={2000}
+            data-scroll
         />
     </div>
-    
 </Layout>
-
-
-

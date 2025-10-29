@@ -26,70 +26,65 @@
             width: 50px;
             animation: rotation 1.5s infinite linear;
             animation-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
-            transition: opacity .1s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+            transition: opacity 0.1s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
         }
         @keyframes rotation {
             from {
-              transform: rotate(0deg);
+                transform: rotate(0deg);
             }
             to {
-              transform: rotate(359deg);
+                transform: rotate(359deg);
             }
-          }
+        }
     }
     .is-ready .u-loader {
         transform: scaleY(0);
     }
     .is-ready img {
         opacity: 0;
-        }
+    }
 
+    .u-spacer {
+        @include -container;
+        height: calc(50svh - 80px);
+        //height: calc((100vw - 100px) / 12 *3);
+        image-rendering: pixelated;
+        display: block;
+        margin-top: 40px;
+        //   width: calc(100vw - 80px);
+        width: calc((100vw - 95px) / 12 * 12);
+        background: url('src/assets/images/blocks2.jpeg');
 
+        opacity: 0.5;
+        border-radius: 20px;
+        background-color: #e0e0e0;
+        //    filter: hue-rotate(283deg) saturate(0.5) brightness(1.6);
+        opacity: 0.5;
+        //visibility:hidden
+        background-position:
+            left bottom,
+            right top;
+        background-repeat: no-repeat;
+        text-align: center;
+        background-color: #192a9b;
+        background-image: url('src/assets/images/blocks 2_left.png'),
+            url('src/assets/images/blocks 2_right.jpg');
+        background-size: contain;
+    }
 
+    @media (max-aspect-ratio: 1/1) {
         .u-spacer {
-            @include -container;
-            height: calc(50svh - 80px);
-            //height: calc((100vw - 100px) / 12 *3);
-            image-rendering: pixelated;
-                   display:block;
-                   margin-top: 40px;
-            //   width: calc(100vw - 80px);
-            width: calc((100vw - 95px) /12 * 12);
-               background: url('src/assets/images/blocks2.jpeg');
-
-               opacity: 0.5;
-               border-radius: 20px;
-               background-color: #e0e0e0;
-           //    filter: hue-rotate(283deg) saturate(0.5) brightness(1.6);
-               opacity: .5;
-               //visibility:hidden
-               background-position: left bottom, right top;
-               background-repeat: no-repeat;
-               text-align: center;
-               background-color: #192a9b;
-               background-image: url('src/assets/images/blocks 2_left.png'),url('src/assets/images/blocks 2_right.jpg');
-               background-size: contain;
-            }
-
-        @media (max-aspect-ratio: 1/1) {
-
-            .u-spacer {
-
             background-image: url('src/assets/images/blocks 2_right.jpg');
             background-position: right top;
-            background-size: calc((100vw - 80px) / 4* 5.6);
+            background-size: calc((100vw - 80px) / 4 * 5.6);
             width: calc((100vw - 80px));
             height: 50vh;
             //height: calc((100vw - 100px) / 4* 3.9);
-                      }
-    
-}
-@media (max-width: 855px) {
-
-    .u-spacer {
-    background-size: cover;
-
-              }
-
-}
+        }
+    }
+    @media (max-width: 855px) {
+        .u-spacer {
+            background-size: cover;
+        }
+    }
 }

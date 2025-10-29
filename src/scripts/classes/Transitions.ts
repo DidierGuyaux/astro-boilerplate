@@ -7,8 +7,7 @@ import Swup from 'swup';
 import { Scroll } from '@scripts/classes/Scroll';
 import { gsap } from 'gsap/dist/gsap';
 import Typed from '/node_modules/typed.js';
-import { PortfolioAccordionsMechanic } from 'src/components/PortfolioAccordions/PortfolioAccordions'
-
+import { PortfolioAccordionsMechanic } from 'src/components/PortfolioAccordions/PortfolioAccordions';
 
 export class Transitions {
     static readonly READY_CLASS = 'is-ready';
@@ -22,60 +21,51 @@ export class Transitions {
 
     private swup: Swup | undefined;
 
-    
-
     constructor() {
         this.onVisitStartBind = this.onVisitStart.bind(this);
         this.beforeContentReplaceBind = this.beforeContentReplace.bind(this);
         this.onContentReplaceBind = this.onContentReplace.bind(this);
         this.onAnimationInEndBind = this.onAnimationInEnd.bind(this);
         this.onAnimationOutStartBind = this.onAnimationOutStart.bind(this);
-
     }
 
     // =============================================================================
     // Lifecycle
     // =============================================================================
-    
 
     init() {
         window.onbeforeunload = function () {
             window.scrollTo(0, 0);
-          }
+        };
         this.initSwup();
 
-
-
-        if (window.location.pathname == "/post") {
-            const portFo = new PortfolioAccordionsMechanic;
+        if (window.location.pathname == '/post') {
+            const portFo = new PortfolioAccordionsMechanic();
             portFo.init();
-            window.addEventListener( 'resize', onWindowResize );
+            window.addEventListener('resize', onWindowResize);
 
             function onWindowResize() {
-             portFo.destroy();
-             portFo.init();
+                portFo.destroy();
+                portFo.init();
             }
-          }
-
+        }
 
         requestAnimationFrame(() => {
-        //Scroll.stop();
+            //Scroll.stop();
 
-       document.documentElement.classList.add(Transitions.READY_CLASS);
+            document.documentElement.classList.add(Transitions.READY_CLASS);
             //Scroll.scrollTo(200, {duration:30, force:true, lock:true})
-            
+
             setTimeout(srollWaitForAnim, 1800);
-            
         });
 
-        
         function srollWaitForAnim() {
             Scroll.start();
-            Scroll.scrollTo(0, {immediate:true, force:true, lock:true})
+            Scroll.scrollTo(0, { immediate: true, force: true, lock: true });
         }
-        if (document.getElementById("typed") != null) {
-            var myEle = document.getElementById("typed");
-            if(myEle) {
+        if (document.getElementById('typed') != null) {
+            var myEle = document.getElementById('typed');
+            if (myEle) {
                 var typed = new Typed('#typed', {
                     strings: ['&#60;OUR STORY/&#62;'],
                     loop: false,
@@ -83,30 +73,27 @@ export class Transitions {
                     shuffle: true,
                     startDelay: 2000,
                     cursorChar: '▮'
-                    });
-                        }
-          }
-          if (document.getElementById("typedWork") != null) {
-            var myEle = document.getElementById("typedWork");
-            if(myEle) {
+                });
+            }
+        }
+        if (document.getElementById('typedWork') != null) {
+            var myEle = document.getElementById('typedWork');
+            if (myEle) {
                 var typed = new Typed('#typedWork', {
-                    strings: ['&#60;Elephant\'s Memory/&#62;'],
+                    strings: ["&#60;Elephant's Memory/&#62;"],
                     loop: false,
                     typeSpeed: 20,
                     shuffle: true,
                     startDelay: 2000,
                     cursorChar: '▮'
-                    });
-                        }
-          }
+                });
+            }
+        }
 
-        
-
-     //   gsap.to('.u-loader img', { scale: 0, duration: .5, ease: 'circ.in', overwrite: true,onComplete: hideLoader() });
-     //   function hideLoader() {
-     //   gsap.to('.u-loader', { height: 0, duration: 1.2, ease: CustomEase.create("custom", '0.075, 0.82, 0.165, 1'), overwrite: true });
-     //   };
-        
+        //   gsap.to('.u-loader img', { scale: 0, duration: .5, ease: 'circ.in', overwrite: true,onComplete: hideLoader() });
+        //   function hideLoader() {
+        //   gsap.to('.u-loader', { height: 0, duration: 1.2, ease: CustomEase.create("custom", '0.075, 0.82, 0.165, 1'), overwrite: true });
+        //   };
     }
 
     destroy() {
@@ -117,19 +104,18 @@ export class Transitions {
     // Methods
     // =============================================================================
     initSwup() {
-        
         this.swup = new Swup({
             //animateHistoryBrowsing: true,
 
             plugins: [
                 new SwupRouteNamePlugin({
                     routes: [
-                      { name: 'home', path: '/' },
-                      { name: 'post', path: '/post' },
-                      { name: 'about', path: '/about' }
+                        { name: 'home', path: '/' },
+                        { name: 'post', path: '/post' },
+                        { name: 'about', path: '/about' }
                     ],
                     paths: true
-                  }),
+                }),
                 new SwupHeadPlugin({
                     persistAssets: true,
                     awaitAssets: true
@@ -138,16 +124,13 @@ export class Transitions {
                     preloadHoveredLinks: true,
                     preloadInitialPage: !import.meta.env.DEV
                 }),
-                new SwupScriptsPlugin(
-
-
-                )
+                new SwupScriptsPlugin()
             ]
         });
-this.swup.hooks.on('visit:start', (visit) => {
-  console.log('Coming from route', visit.from.route);
-  console.log('Going to route', visit.to.route);
-});
+        this.swup.hooks.on('visit:start', (visit) => {
+            console.log('Coming from route', visit.from.route);
+            console.log('Going to route', visit.to.route);
+        });
         this.swup.hooks.on('visit:start', this.onVisitStartBind);
         this.swup.hooks.before('content:replace', this.beforeContentReplaceBind);
         this.swup.hooks.on('content:replace', this.onContentReplaceBind);
@@ -195,13 +178,11 @@ this.swup.hooks.on('visit:start', (visit) => {
      * @param visit: VisitType
      */
     onVisitStart() {
-
         document.documentElement.classList.add(Transitions.TRANSITION_CLASS);
         document.documentElement.classList.remove(Transitions.READY_CLASS);
         window.onbeforeunload = function () {
             window.scrollTo(0, 0);
-          }
-  
+        };
     }
 
     /**
@@ -212,12 +193,11 @@ this.swup.hooks.on('visit:start', (visit) => {
      * @param visit: VisitType
      */
     beforeContentReplace() {
-
         Scroll?.destroy();
-        if (window.location.pathname === "/post") {
-            const portFo = new PortfolioAccordionsMechanic;
-            portFo.destroy()
-          }
+        if (window.location.pathname === '/post') {
+            const portFo = new PortfolioAccordionsMechanic();
+            portFo.destroy();
+        }
     }
 
     /**
@@ -230,8 +210,6 @@ this.swup.hooks.on('visit:start', (visit) => {
     onContentReplace(visit: VisitType) {
         Scroll?.init();
         this.updateDocumentAttributes(visit);
-
-
     }
 
     /**
@@ -241,9 +219,7 @@ this.swup.hooks.on('visit:start', (visit) => {
      * @see https://swup.js.org/hooks/#animation-out-start
      * @param visit: VisitType
      */
-    onAnimationOutStart() {
-
-    }
+    onAnimationOutStart() {}
 
     /**
      * On animation:in:end
@@ -253,14 +229,13 @@ this.swup.hooks.on('visit:start', (visit) => {
      * @param visit: VisitType
      */
     onAnimationInEnd() {
-
-        if (window.location.pathname == "/post") {
-            const portFo = new PortfolioAccordionsMechanic;
-            portFo.init()
-          }
-        if (document.getElementById("typed") != null) {
-            var myEle = document.getElementById("typed");
-            if(myEle) {
+        if (window.location.pathname == '/post') {
+            const portFo = new PortfolioAccordionsMechanic();
+            portFo.init();
+        }
+        if (document.getElementById('typed') != null) {
+            var myEle = document.getElementById('typed');
+            if (myEle) {
                 var typed = new Typed('#typed', {
                     strings: ['&#60;OUR STORY/&#62;'],
                     loop: false,
@@ -268,24 +243,19 @@ this.swup.hooks.on('visit:start', (visit) => {
                     shuffle: true,
                     startDelay: 2000,
                     cursorChar: '▮'
-                    });
-                        }
-          }
-
-
+                });
+            }
+        }
 
         document.documentElement.classList.remove(Transitions.TRANSITION_CLASS);
         document.documentElement.classList.add(Transitions.READY_CLASS);
 
-            //const section1 = document.getElementById("section_1");
-            //const body = document.getElementById("body");
-            //section1.style.zIndex = '999';
-            //body.style.position = 'relative';
-            Scroll.start();
-            
-            Scroll.scrollTo(0, {duration:30, force:true, lock:true})
-        
+        //const section1 = document.getElementById("section_1");
+        //const body = document.getElementById("body");
+        //section1.style.zIndex = '999';
+        //body.style.position = 'relative';
+        Scroll.start();
 
+        Scroll.scrollTo(0, { duration: 30, force: true, lock: true });
     }
-
 }

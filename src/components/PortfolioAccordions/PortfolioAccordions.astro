@@ -1,58 +1,91 @@
 ---
-
 import Layout from '@layouts/Layout.astro';
 import Image from '@components/Image/Image.astro';
 import Button from '@components/Button/Button.astro';
 import { useEffect } from 'astro:head';
 
-
-let res = await fetch("https://elephant.ca/wp-json/wp/v2/dt_portfolio/?per_page=100&_embed&_fields=id,title,date,content,excerpt,_links,_embedded&_embed,slug");
+let res = await fetch(
+    'https://elephant.ca/wp-json/wp/v2/dt_portfolio/?per_page=100&_embed&_fields=id,title,date,content,excerpt,_links,_embedded&_embed,slug'
+);
 let posts = await res.json();
-
-
-
-
 ---
 
- {
-      posts.map((post, index) => (
-        <article client:visible style="margin: 0;gap: 20px;border-top:1px solid blue"  data-scroll 
-        data-scroll-repeat 
-        data-scroll-event-progress={index}
-        data-scroll-offset="10%, 25%" data-scroll-ignore-fold class="accordian"  >
-        <div class="inner u-grid u-grid-cols-12" >
-            <div class="paragraph  u-col-span-12 u-col-start-1 u-grid u-grid-cols-12"  data-scroll data-scroll-repeat  data-scroll-offset="0%, -40%" data-scroll-ignore-fold >
-                <h2 class="u-heading-h2 u-col-span-5 u-col-start-1 is-inview" style="font-size:32px;line-height: 1;">
-                    <a class="portfolioLink" href={`/projects/${post.slug}/`} set:html={post.title.rendered} />
-                </h2>
-                <div class="u-col-span-1 u-col-start-6" style="margin-top: 5px;background-color: #0a69fe;color: white;border-radius: 33px;text-align: center;width: fit-content;
+{
+    posts.map((post, index) => (
+        <article
+            client:visible
+            style="margin: 0;gap: 20px;border-top:1px solid blue"
+            data-scroll
+            data-scroll-repeat
+            data-scroll-event-progress={index}
+            data-scroll-offset="10%, 25%"
+            data-scroll-ignore-fold
+            class="accordian"
+        >
+            <div class="inner u-grid u-grid-cols-12">
+                <div
+                    class="paragraph u-col-span-12 u-col-start-1 u-grid u-grid-cols-12"
+                    data-scroll
+                    data-scroll-repeat
+                    data-scroll-offset="0%, -40%"
+                    data-scroll-ignore-fold
+                >
+                    <h2
+                        class="u-heading-h2 is-inview u-col-span-5 u-col-start-1"
+                        style="font-size:32px;line-height: 1;"
+                    >
+                        <a
+                            class="portfolioLink"
+                            href={`/projects/${post.slug}/`}
+                            set:html={post.title.rendered}
+                        />
+                    </h2>
+                    <div
+                        class="u-col-span-1 u-col-start-6"
+                        style="margin-top: 5px;background-color: #0a69fe;color: white;border-radius: 33px;text-align: center;width: fit-content;
                 padding: 0 5px;height: fit-content;align-self: center;justify-self: center;
-                " > 
-                <h3 set:html={post._embedded["wp:term"]['0']['0'].name} /></div>
-                <div class="u-col-span-1 u-col-start-7" style="text-align:center;align-content: center;margin: 0 10px;
-    color: #0a69fe;"> <h3 set:html={post.date.slice(0, 4)} /></div>
-                <div class="u-col-span-4 u-col-start-8" style="text-align:left;align-content: center;margin: 0 10px;
-    color: #0a69fe;"> <h3 set:html={post.excerpt.rendered} /></div>
-                <Button class="c-custom-button u-col-span-1 u-col-start-12" href="/about">Visit &nearr;</Button>
-            </div>
-            <div class="image u-col-span-12 u-col-start-1 u-grid u-grid-cols-12" style="gap:40px;align-content: end">
-                <Image 
-                                            src={post._embedded["wp:featuredmedia"]['0'].source_url}  
-                                            alt="A photograph of Françoise Guyaux smiling at the camera, in front of trees."
-                                            class="u-col-span-3 u-col-start-1"
-                                            caption=""
-                                            loading="lazy"
-                                            width="5"
-                                            height="3"
-                                            data-scroll
-                                            data-scroll-offset="20%, 0%"
-                                            data-scroll-repeat
+                "
+                    >
+                        <h3 set:html={post._embedded['wp:term']['0']['0'].name} />
+                    </div>
+                    <div
+                        class="u-col-span-1 u-col-start-7"
+                        style="text-align:center;align-content: center;margin: 0 10px;
+    color: #0a69fe;"
+                    >
+                        {' '}
+                        <h3 set:html={post.date.slice(0, 4)} />
+                    </div>
+                    <div
+                        class="u-col-span-4 u-col-start-8"
+                        style="text-align:left;align-content: center;margin: 0 10px;
+    color: #0a69fe;"
+                    >
+                        {' '}
+                        <h3 set:html={post.excerpt.rendered} />
+                    </div>
+                    <Button class="c-custom-button u-col-span-1 u-col-start-12" href="/about">
+                        Visit &nearr;
+                    </Button>
+                </div>
+                <div
+                    class="image u-col-span-12 u-col-start-1 u-grid u-grid-cols-12"
+                    style="gap:40px;align-content: end"
+                >
+                    <Image
+                        src={post._embedded['wp:featuredmedia']['0'].source_url}
+                        alt="A photograph of Françoise Guyaux smiling at the camera, in front of trees."
+                        class="u-col-span-3 u-col-start-1"
+                        caption=""
+                        loading="lazy"
+                        width="5"
+                        height="3"
+                        data-scroll
+                        data-scroll-offset="20%, 0%"
+                        data-scroll-repeat
                     />
-
-                    
+                </div>
             </div>
-        </div>
-        
         </article>
-      ))
-    }
+    ))
+}

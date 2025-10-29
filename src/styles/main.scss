@@ -52,7 +52,6 @@
         font-weight: 1;
         font-style: normal;
     }
-
 }
 
 // ==========================================================================
@@ -97,21 +96,22 @@ html {
     overscroll-behavior: none;
     overflow-x: hidden;
     overflow-y: hidden;
-    height: 100%; 
+    height: 100%;
 }
-html, body {
+html,
+body {
     width: 100vw;
     height: 100vh;
-   // scrollbar-gutter: stable;
+    // scrollbar-gutter: stable;
     scrollbar-gutter: auto;
- }
-html.is-ready{
-//cursor: auto;
-overflow-y: auto;
+}
+html.is-ready {
+    //cursor: auto;
+    overflow-y: auto;
 }
 
-html:not(is-ready){
-    height: 100%; 
+html:not(is-ready) {
+    height: 100%;
     overflow-y: hidden;
     cursor: wait;
 }
@@ -121,11 +121,9 @@ body {
     color: var(--color-primary);
     overflow-x: hidden;
     overflow-y: hidden;
-    height: 100%; 
+    height: 100%;
     //position:fixed
 }
-
-
 
 ::selection {
     background-color: var(--color-primary);
@@ -158,9 +156,9 @@ html.is-animating .transition-fade {
     cursor: wait;
 }
 
-
-#typed, #typedWork{
-    position: relative ;
+#typed,
+#typedWork {
+    position: relative;
 }
 .typed-cursor {
     line-height: 1.6vw;
@@ -174,20 +172,19 @@ html.is-animating .transition-fade {
 .c-scrollbar_thumb {
     color: #0969fc;
 }
-main  {
-    padding-top:80px
-    }
+main {
+    padding-top: 80px;
+}
 .stop-scrolling {
     height: 100%;
     overflow: hidden;
-  }
+}
 
-  
-.blurryBlocks{
+.blurryBlocks {
     backdrop-filter: blur(50px);
-  }
+}
 
-  video {
+video {
     position: absolute;
     top: -81vh;
     left: 0;
@@ -195,50 +192,49 @@ main  {
     min-height: 170vh;
     z-index: -100;
     opacity: 0.8;
-  }
+}
 
-  article{
+article {
     overflow: hidden;
     align-content: start;
-height: 140px;
-row-gap:20px;
-background-color: white;
-  }
+    height: 140px;
+    row-gap: 20px;
+    background-color: white;
+}
 
-  .inner  {
+.inner {
     row-gap: 20px;
     height: fit-content;
     align-content: start;
     padding-bottom: 20px;
 }
-.image{
+.image {
     opacity: 0;
     visibility: hidden;
-
 
     overflow: hidden;
 }
 .image .c-image_inner {
     max-height: 40vh;
-
 }
 
+.paragraph {
+    transform: translate3d(0, 1.5rem, 0);
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+    transition:
+        opacity 0.6s cubic-bezier(0.215, 0.61, 0.355, 1),
+        transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1),
+        clip-path 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+    line-height: 1.5em;
+    padding: 10px 0;
+    height: 60px;
+}
 
-
-.paragraph{
-        transform: translate3d(0, 1.5rem, 0);
-        opacity:0;
-        clip-path: inset(0 0 100% 0);
-        transition: opacity .6s cubic-bezier(0.215, 0.61, 0.355, 1),transform .6s cubic-bezier(0.215, 0.61, 0.355, 1), clip-path .6s cubic-bezier(0.215, 0.61, 0.355, 1);
-        line-height: 1.5em;   
-        padding:10px 0;
-        height:60px
-    }
-
-.paragraph.is-inview{
-            transform: translateY(0) rotateX(0);
-            opacity:1;
-            clip-path: inset(0 0 -10% 0);
+.paragraph.is-inview {
+    transform: translateY(0) rotateX(0);
+    opacity: 1;
+    clip-path: inset(0 0 -10% 0);
 }
 .paragraph h2 a:after {
     content: attr(data-count);
@@ -247,5 +243,13 @@ background-color: white;
     margin-left: 6px;
 }
 
-#portfoliosSection { position: relative; min-height: 100vh; }
-.accordian, .accordion { overflow: hidden; height: 100px; will-change: height; }
+#portfoliosSection {
+    position: relative;
+    min-height: 100vh;
+}
+.accordian,
+.accordion {
+    overflow: hidden;
+    height: 100px;
+    will-change: height;
+}

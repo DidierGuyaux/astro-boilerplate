@@ -106,7 +106,6 @@ import { $scroll, type IScrollValues } from './stores/scroll';
 
 $scroll.listen(({ scroll, limit, velocity, direction, progress }: IScrollValues) => {
     console.log('Scroll:', { scroll, limit, velocity, direction, progress });
-    
 });
 ```
 

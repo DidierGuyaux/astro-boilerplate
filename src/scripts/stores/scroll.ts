@@ -9,7 +9,6 @@ export type ScrollValues = {
 };
 
 export const $scroll = map<ScrollValues>({
-    
     scroll: window.scrollY,
     limit: 0,
     velocity: 0,
