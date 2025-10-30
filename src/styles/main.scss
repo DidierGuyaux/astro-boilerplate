@@ -139,7 +139,7 @@ html.is-changing .transition-fade {
 }
 /* Define the styles for the unloaded pages */
 html.is-animating .transition-fade {
-    opacity: 0;
+    opacity: 1;
     cursor: wait;
 }
 
@@ -254,3 +254,8 @@ article {
     will-change: height;
 }
 
+#threeWrapper canvas {
+    z-index: 99999;
+    position: fixed;
+    filter: brightness(1.05) contrast(.9) saturate(0.4)
+}

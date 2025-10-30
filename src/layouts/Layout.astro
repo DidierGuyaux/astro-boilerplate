@@ -17,7 +17,6 @@ const FONTS: string[] = [
     // 'WebfontRegular.woff2',
     // 'WebfontBold.woff2',
 ];
-
 ---
 
 <!doctype html>
@@ -54,10 +53,10 @@ const FONTS: string[] = [
         />
     </head>
     <body id="body">
-    <script>
-            if ("scrollRestoration" in history) {
-    history.scrollRestoration = "manual";
-  }
+        <script>
+            if ('scrollRestoration' in history) {
+                history.scrollRestoration = 'manual';
+            }
         </script>
         <div class="u-loader"><img src="/assets/images/eleph_loader_logo.png" /></div>
         <div class="u-container" style="height: 80px;position:fixed">
@@ -67,9 +66,42 @@ const FONTS: string[] = [
                 <a href="/post">The post</a>
             </nav>
         </div>
-
-        <main role="main" id="swup" class="transition-fade stop-scrolling">
-            <div id="content" data-scroll-container>
+                                                 <div id="content" data-scroll-container>
+                                                            <div
+                                                    class="u-container"
+                                                    id="threeWrapper"
+                                                    style="
+                                                    clip-path: inset(0px 40px round 20px);
+    z-index: 9999;
+    pointer-events: none;
+    position: absolute;
+    margin-top: -40px;
+    height: calc(100svh);
+    opacity: 1;
+    visibility: inherit;
+    width: 100vw;"
+                                                    data-scroll-section
+                                                    data-swup-ignore"
+                                                >
+                                                    <div
+                                                        class="u-container"
+                                                        id="three-container"
+                                                        style="padding:0;margin:0;position:absolute;top: 0px;left:0%width: 100%;filter: contrast(0.6) brightness(1.22) hue-rotate(345deg); 
+                                                    pointer-events:none;z-index:9999"
+                                                        data-scroll
+                                                        data-scroll-speed="-0.5"
+                                                    >
+                                                    </div>
+                                                    <div
+                                                        class="u-spacer"
+                                                        style="height=60px;position:absolute;bottom: 0;padding: 0;overflow:hidden"
+                                                        data-scroll
+                                                        data-scroll-ignore-fold
+                                                    >
+                                                    </div>
+                                                </div>
+        <main role="main" id="swup" class="transition-fade ">
+           
                 <slot />
             </div>
         </main>

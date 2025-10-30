@@ -12,10 +12,11 @@ import 'splitting/dist/splitting.css';
 import 'splitting/dist/splitting-cells.css';
 import Splitting from 'splitting';
 
-history.scrollRestoration && (history.scrollRestoration = "manual",
-window.scrollTo(0, 0)),
+//import { ThreeScene } from '@scripts/classes/ThreeScene';
 
-Splitting();
+
+history.scrollRestoration && ((history.scrollRestoration = 'manual'), window.scrollTo(0, 0)),
+    Splitting();
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 ScrollTrigger.config({ ignoreMobileResize: true });
@@ -24,14 +25,10 @@ ScrollTrigger.config({ ignoreMobileResize: true });
 const transitions = new Transitions();
 transitions.init();
 
+
 // Initialize the Scroll class
 
-    Scroll.init();
-
-
-
-
-
+Scroll.init();
 
 // Initialize the Grid helper
 if (import.meta.env.MODE === 'development') {
