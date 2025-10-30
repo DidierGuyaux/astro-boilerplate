@@ -1,8 +1,11 @@
-export default class Accordion extends HTMLElement {
+// src/components/Accordion/Accordion.ts
+
+import { ComponentElement } from '@scripts/stores/componentManager';
+
+export default class Accordion extends HTMLDetailsElement {
     static readonly DURATION = 300;
     static readonly CLASS_OPEN = 'is-open';
-    private onClickBind: any;
-    private $root: HTMLDetailsElement;
+    // REMOVED: private onClickBind: any; 
     private $summary: HTMLElement;
     private $content: HTMLElement;
     private $parent: HTMLElement | null;
@@ -13,13 +16,11 @@ export default class Accordion extends HTMLElement {
     constructor() {
         super();
 
-        // Binding
-        this.onClickBind = this.onClick.bind(this);
+        // Binding logic REMOVED. Arrow function below handles binding.
 
         // UI
-        this.$root = this.querySelector('details.c-accordion_details')!;
-        this.$summary = this.$root.querySelector('summary.c-accordion_summary')!;
-        this.$content = this.$root.querySelector('.c-accordion_content')!;
+        this.$summary = this.querySelector('summary.c-accordion_summary')!;
+        this.$content = this.querySelector('.c-accordion_content')!;
         this.$parent = this.closest('[data-accordion-parent]') || null;
 
         // Data
@@ -32,10 +33,18 @@ export default class Accordion extends HTMLElement {
     // Lifecycle
     // =============================================================================
     connectedCallback() {
+        // Must call super methods when extending ComponentElement
+        if (typeof super.connectedCallback === 'function') {
+            super.connectedCallback(); 
+        }
         this.bindEvents();
     }
 
     disconnectedCallback() {
+        // Must call super methods when extending ComponentElement
+        if (typeof super.disconnectedCallback === 'function') {
+            super.disconnectedCallback(); 
+        }
         this.unbindEvents();
     }
 
@@ -43,44 +52,48 @@ export default class Accordion extends HTMLElement {
     // Events
     // =============================================================================
     bindEvents() {
-        this.$summary.addEventListener('click', this.onClickBind);
+        // Use the auto-bound arrow function property 'onClick' directly
+        this.$summary.addEventListener('click', this.onClick);
     }
     unbindEvents() {
-        this.$summary.removeEventListener('click', this.onClickBind);
+        this.$summary.removeEventListener('click', this.onClick);
     }
 
     // =============================================================================
     // Callbacks
     // =============================================================================
-    onClick(e: Event) {
+    /**
+     * 🚀 REFACTOR: Converted to an arrow function property for auto-binding.
+     */
+    private onClick = (e: Event) => {
         e.preventDefault();
 
-        this.$root.style.overflow = 'hidden';
+        this.style.overflow = 'hidden';
 
-        if (this.isClosing || !this.$root.open) {
+        if (this.isClosing || !this.open) {
             this.start();
-        } else if (this.isExpanding || this.$root.open) {
+        } else if (this.isExpanding || this.open) {
             this.shrink();
         }
-    }
+    };
 
     // =============================================================================
     // Methods
     // =============================================================================
     shrink() {
         this.isClosing = true;
-        this.$root.classList.remove(Accordion.CLASS_OPEN);
+        this.classList.remove(Accordion.CLASS_OPEN);
 
         if (this.$parent) this.$parent.classList.remove(Accordion.CLASS_OPEN);
 
-        const startHeight = `${this.$root.offsetHeight}px`;
+        const startHeight = `${this.offsetHeight}px`;
         const endHeight = `${this.$summary.offsetHeight}px`;
 
         if (this.animation) {
             this.animation.cancel();
         }
 
-        this.animation = this.$root.animate(
+        this.animation = this.animate(
             {
                 height: [startHeight, endHeight]
             },
@@ -95,31 +108,31 @@ export default class Accordion extends HTMLElement {
             this.animation.onfinish = () => this.onAnimationFinish(false);
             this.animation.oncancel = () => {
                 this.isClosing = false;
-                this.$root.classList.add(Accordion.CLASS_OPEN);
+                this.classList.add(Accordion.CLASS_OPEN);
             };
         }
     }
 
     start() {
-        this.$root.style.height = `${this.$root.offsetHeight}px`;
+        this.style.height = `${this.offsetHeight}px`;
 
         window.requestAnimationFrame(() => this.expand());
     }
 
     expand() {
         this.isExpanding = true;
-        this.$root.classList.add(Accordion.CLASS_OPEN);
+        this.classList.add(Accordion.CLASS_OPEN);
 
         if (this.$parent) this.$parent.classList.add(Accordion.CLASS_OPEN);
 
-        const startHeight = `${this.$root.offsetHeight}px`;
+        const startHeight = `${this.offsetHeight}px`;
         const endHeight = `${this.$summary.offsetHeight + this.$content.offsetHeight}px`;
 
         if (this.animation) {
             this.animation?.cancel();
         }
 
-        this.animation = this.$root.animate(
+        this.animation = this.animate(
             {
                 height: [startHeight, endHeight]
             },
@@ -133,21 +146,23 @@ export default class Accordion extends HTMLElement {
             this.animation.onfinish = () => this.onAnimationFinish(true);
             this.animation.oncancel = () => {
                 this.isExpanding = false;
-                this.$root.classList.remove(Accordion.CLASS_OPEN);
+                this.classList.remove(Accordion.CLASS_OPEN);
             };
         }
     }
 
     onAnimationFinish(open: boolean) {
-        this.$root.open = open;
+        this.open = open;
 
         this.animation = null;
 
         this.isClosing = false;
         this.isExpanding = false;
 
-        this.$root.style.height = this.$root.style.overflow = '';
+        this.style.height = this.style.overflow = '';
     }
 }
 
-customElements.define('c-accordion', Accordion);
+customElements.define('c-accordion', ComponentElement(Accordion, 'Accordion'), {
+    extends: 'details'
+});

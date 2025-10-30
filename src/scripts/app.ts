@@ -14,7 +14,6 @@ import Splitting from 'splitting';
 
 //import { ThreeScene } from '@scripts/classes/ThreeScene';
 
-
 history.scrollRestoration && ((history.scrollRestoration = 'manual'), window.scrollTo(0, 0)),
     Splitting();
 
@@ -24,7 +23,6 @@ ScrollTrigger.config({ ignoreMobileResize: true });
 // Initialize the Transitions class
 const transitions = new Transitions();
 transitions.init();
-
 
 // Initialize the Scroll class
 

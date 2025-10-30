@@ -36,6 +36,7 @@
         "astro-seo": "^0.8.4",
         "astro-svg-sprite": "^1.1.0",
         "gsap": "^3.12.7",
+        "html2canvas": "^1.4.1",
         "lil-gui": "^0.20.0",
         "locomotive-scroll": "^5.0.0-beta.21",
         "nanostores": "^0.11.3",

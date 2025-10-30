@@ -13,24 +13,23 @@ import {
 
 export class ThreeScene {
     // Placeholder properties for your THREE.js objects
-    // static scene: THREE.Scene; 
-    // static currentModel: any = null; 
+    // static scene: THREE.Scene;
+    // static currentModel: any = null;
     static isInitialized: boolean = false;
-    
+
     // Define which pages show which models (use URL paths as keys)
     static SCENE_CONFIGS: { [url: string]: string } = {
-        '/': 'elephant_model.glb',       // Homepage shows the elephant
-        '/index': 'elephant_model.glb',  // Assuming '/index' also leads to the elephant
-        '/about': 'no_model',            // About page hides the model
-        '/post': 'no_model',             // Post page hides the model
+        '/': 'elephant_model.glb', // Homepage shows the elephant
+        '/index': 'elephant_model.glb', // Assuming '/index' also leads to the elephant
+        '/about': 'no_model', // About page hides the model
+        '/post': 'no_model' // Post page hides the model
     };
 
     static init(canvas, gui) {
         if (this.isInitialized) return;
-        
+
         const container = document.getElementById('three-container');
         if (!container) return;
-
 
         const toneMapping = ACESFilmicToneMapping;
 
@@ -60,31 +59,29 @@ export class ThreeScene {
         );
         camera.position.set(-7, 5.215, 10);
         camera.rotation.set(-0.48069929742360806, -0.6735230539916102, -0.31448718472714915);
-    
+
         canvas.appendChild(renderer.domElement);
 
         renderer.render(scene, camera);
-
 
         window.addEventListener('resize', onWindowResize);
 
         function onWindowResize() {
             console.log('resizig');
-    
+
             camera.fov = 80 - (window.innerWidth / 2000) * 30;
-    
+
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
-    
+
             renderer.setSize(window.innerWidth, window.innerHeight, false);
         }
 
-
         // 1. Initialize the Three.js scene (renderer, camera, lights, etc.)
         // ... Core THREE.js setup ...
-        
+
         this.isInitialized = true;
-        
+
         // 2. Load the initial model for the current page
         this.loadPageModel(window.location.pathname);
     }
@@ -112,15 +109,15 @@ export class ThreeScene {
         // Normalize URL to check against configs
         const normalizedUrl = url.endsWith('/') && url.length > 1 ? url.slice(0, -1) : url;
         const modelName = this.SCENE_CONFIGS[normalizedUrl] || 'no_model';
-        
+
         this.loadModel(modelName);
-        
+
         // Update visibility based on the loaded model
         // Hypothetical: this.currentModel.visible = (modelName !== 'no_model');
     }
 
     // --- Swup Hooks (Called by Transitions.ts) ---
-    
+
     // Optional: Use this for a visual out-animation of the model
     static onTransitionOut() {
         console.log('ThreeScene: Transition out - model is preserving state.');
@@ -131,21 +128,21 @@ export class ThreeScene {
         // This is the ideal moment to swap the model before the new page renders
         this.loadPageModel(url);
     }
-    
+
     // Called when the new page is loaded and ready
     static onNavigateIn() {
         // 1. Determine if the model should be visible (e.g., check SCENE_CONFIGS)
         const normalizedUrl = url.endsWith('/') && url.length > 1 ? url.slice(0, -1) : url;
         const modelName = this.SCENE_CONFIGS[normalizedUrl] || 'no_model';
-        
+
         // 2. Set visibility (e.g., if you are hiding the canvas or model)
         if (this.currentModel && modelName !== 'no_model') {
             // this.currentModel.visible = true;
         }
 
-        // 3. Re-engage any continuous animation or scroll-tracking logic 
+        // 3. Re-engage any continuous animation or scroll-tracking logic
         // (e.g., make sure your RAF loop or scroll listeners are running again).
-        // e.g., this.startAnimationLoop(); 
+        // e.g., this.startAnimationLoop();
         console.log(`ThreeScene: Model visibility re-checked for ${url}.`);
     }
 }

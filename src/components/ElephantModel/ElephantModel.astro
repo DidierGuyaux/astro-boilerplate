@@ -1,9 +1,9 @@
 <script type="module" client:load>
-  import { elephantScene } from '/src/components/ElephantModel/elephantScene.ts';
+    import { elephantScene } from '/src/components/ElephantModel/elephantScene.ts';
 
-  // If you still keep the pending trick, set it once:
-  window.__pendingSceneSubject = elephantScene;
+    // If you still keep the pending trick, set it once:
+    window.__pendingSceneSubject = elephantScene;
 
-  // Dispatch ONCE
-  window.dispatchEvent(new CustomEvent('scene:subject', { detail: elephantScene }));
+    // Dispatch ONCE
+    window.dispatchEvent(new CustomEvent('scene:subject', { detail: elephantScene }));
 </script>

@@ -66,11 +66,11 @@ const FONTS: string[] = [
                 <a href="/post">The post</a>
             </nav>
         </div>
-                                                 <div id="content" data-scroll-container>
-                                                            <div
-                                                    class="u-container"
-                                                    id="threeWrapper"
-                                                    style="
+        <div id="content" data-scroll-container>
+            <div
+                class="u-container"
+                id="threeWrapper"
+                style="
                                                     clip-path: inset(0px 40px round 20px);
     z-index: 9999;
     pointer-events: none;
@@ -80,31 +80,30 @@ const FONTS: string[] = [
     opacity: 1;
     visibility: inherit;
     width: 100vw;"
-                                                    data-scroll-section
-                                                    data-swup-ignore"
-                                                >
-                                                    <div
-                                                        class="u-container"
-                                                        id="three-container"
-                                                        style="padding:0;margin:0;position:absolute;top: 0px;left:0%width: 100%;filter: contrast(0.6) brightness(1.22) hue-rotate(345deg); 
+                data-scroll-section
+                data-swup-ignore"
+            >
+                <div
+                    class="u-container"
+                    id="three-container"
+                    style="padding:0;margin:0;position:absolute;top: 0px;left:0%width: 100%;filter: contrast(0.6) brightness(1.22) hue-rotate(345deg); 
                                                     pointer-events:none;z-index:9999"
-                                                        data-scroll
-                                                        data-scroll-speed="-0.5"
-                                                    >
-                                                    </div>
-                                                    <div
-                                                        class="u-spacer"
-                                                        style="height=60px;position:absolute;bottom: 0;padding: 0;overflow:hidden"
-                                                        data-scroll
-                                                        data-scroll-ignore-fold
-                                                    >
-                                                    </div>
-                                                </div>
-        <main role="main" id="swup" class="transition-fade ">
-           
-                <slot />
+                    data-scroll
+                    data-scroll-speed="-0.5"
+                >
+                </div>
+                <div
+                    class="u-spacer"
+                    style="height=60px;position:absolute;bottom: 0;padding: 0;overflow:hidden"
+                    data-scroll
+                    data-scroll-ignore-fold
+                >
+                </div>
             </div>
-        </main>
+            <main role="main" id="swup" class="transition-fade">
+                <slot />
+            </main>
+        </div>
 
         <footer class="u-container u-flex u-justify-between u-py-fluid-xs" id="footer">
             <div>
